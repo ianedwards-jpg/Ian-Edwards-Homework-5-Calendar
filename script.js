@@ -1,23 +1,47 @@
 var todoInput = document.querySelector("#todo-text");
 var todoForm = document.querySelector("#todo-form");
-var hoursList = document.querySelector("#hourslist");
-var todoCountSpan = document.querySelector("#todo-count");
+var container = document.querySelector("#container");
 
-var businessHours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
+var businessHours = [" 9AM:", "10AM:", "11AM:", "12PM:", " 1PM:", " 2PM:", " 3PM:", " 4PM:", " 5PM:"];
 
 displayHours();
 
 function displayHours() {
+  // Document
   // Clear todoList element and update todoCountSpan
-  hoursList.innerHTML = "";
-  todoCountSpan.textContent = todos.length;
+  container.innerHTML = "";
 
   // Render a new li for each todo
-  for (var i = 0; i < todos.length; i++) {
-    var todo = todos[i];
+  for (var i = 0; i < businessHours.length; i++) {
 
-    var li = document.createElement("li");
-    li.textContent = todo;
-    todoList.appendChild(li);
+    //new row div
+    var row = document.createElement("div")
+    container.appendChild(row);
+
+
+   //Hour Div (2 Columns)
+    var timeShow = document.createElement("div");
+    timeShow.className += "col-2"
+    timeShow.textContent = businessHours[i];
+    row.appendChild(timeShow);
+
+
+    //Hour Div (10 Columns)
+    var inDiv = document.createElement("div");
+    inDiv.className += "col-10"
+    inDiv.value = inp;
+    row.appendChild(inDiv);
+
+
+    //Text Input Box Div
+    var inp = document.createElement("input")
+    inp.setAttribute("type", "text");
+    inp.className += "input"
+    row.appendChild(inp)
+
+    var saveBtn= document.createElement("button")
+    saveBtn.className += "btn btn-default saveBtn"
+    row.appendChild(saveBtn)
   }
 }
+
