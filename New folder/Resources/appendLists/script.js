@@ -18,7 +18,7 @@ function displayHours() {
     var row = document.createElement("row")
     hoursList.appendChild(row);
    
-    var li = document.createElement("li");
+    var li = document.createElement("div");
     //li.setAttribute("type", "text");
     li.className += "col-2"
     li.textContent = businessHours[i];
@@ -30,3 +30,6 @@ function displayHours() {
     row.appendChild(inp)
   }
 }
+
+
+//create columns then create rows 
