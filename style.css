@@ -12,6 +12,9 @@ textarea{
   border-left: 1px solid black;
   padding: 10px;
 }
+.row{
+  display: inline block;
+}
 
 .jumbotron {
   text-align: center;
@@ -70,6 +73,5 @@ textarea{
   transition: all .3s ease-in-out;
 }
 .col-10, .col-2 {
-  width: 90px;
   float: left;
 }

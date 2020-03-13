@@ -16,6 +16,7 @@ function displayHours() {
 
     //new row div
     var row = document.createElement("div")
+    row.className+= "row"
     container.appendChild(row);
 
 
