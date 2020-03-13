@@ -33,10 +33,11 @@ textarea{
   border-radius: 15px;
 }
 
-.row {
+.row, .input{
   white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;;
+  height: 40px;
+  width: 80%;
+  border-top: 1px solid white;
 }
 
 .hour {

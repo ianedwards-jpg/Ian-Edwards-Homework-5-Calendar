@@ -38,11 +38,11 @@ function displayHours() {
     var inp = document.createElement("input")
     inp.setAttribute("type", "text");
     inp.className += "input"
-    row.appendChild(inp)
+    inDiv.appendChild(inp)
 
     var saveBtn= document.createElement("button")
     saveBtn.className += "btn btn-default saveBtn"
-    row.appendChild(saveBtn)
+    inDiv.appendChild(saveBtn)
   }
 }
 
