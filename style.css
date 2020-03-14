@@ -36,7 +36,7 @@ textarea{
 .row, .input{
   white-space: pre-wrap;
   height: 40px;
-  width: 80%;
+  width: 90%;
   border-top: 1px solid white;
 }
 
@@ -67,6 +67,7 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  height: 40px;
 }
 
 .saveBtn i:hover {
