@@ -1,13 +1,19 @@
 var todoInput = document.querySelector("#todo-text");
 var todoForm = document.querySelector("#todo-form");
 var container = document.querySelector("#container");
+var inputBox = document.querySelector("#input");
 
-var businessHours = [" 9AM:", "10AM:", "11AM:", "12PM:", " 1PM:", " 2PM:", " 3PM:", " 4PM:", " 5PM:"];
+var businessHours = ["9AM:", "10AM:", "11AM:", "12PM:", "1PM:", "2PM:", "3PM:", "4PM:", "5PM:"];
+var saveText = "Save";
+var e = 1;
+var events = new Array(); //do i need to reference "i" here? 
 
+// Container Document Render 
 displayHours();
+renderLastRegistered();
 
 function displayHours() {
-  // Document
+
   // Clear todoList element and update todoCountSpan
   container.innerHTML = "";
 
@@ -16,13 +22,12 @@ function displayHours() {
 
     //new row div
     var row = document.createElement("div")
-    row.className+= "row"
+    row.className += "row"
     container.appendChild(row);
 
-
-   //Hour Div (2 Columns)
+    //Hour Div (2 Columns)
     var timeShow = document.createElement("div");
-    timeShow.className += "col-2"
+    timeShow.className += "col-1 timeShow"
     timeShow.textContent = businessHours[i];
     row.appendChild(timeShow);
 
@@ -38,11 +43,45 @@ function displayHours() {
     var inp = document.createElement("input")
     inp.setAttribute("type", "text");
     inp.className += "input"
+    inp.textContent = events[i]
     inDiv.appendChild(inp)
 
-    var saveBtn= document.createElement("button")
-    saveBtn.className += "btn btn-default saveBtn"
-    inDiv.appendChild(saveBtn)
+    //Hour Div (10 Columns)
+    var btnDiv = document.createElement("div");
+    btnDiv.className += "col-1"
+    row.appendChild(btnDiv);
+
+    var saveBtn = document.createElement("button")
+    saveBtn.className += "btn saveBtn"
+    saveBtn.textContent = saveText;
+    btnDiv.appendChild(saveBtn)
+    /////////////////////////////////////////////////
+    //Create New Array to store values in 
+    all[i] = a;
+    a++;
+    ////////////////////////////////////////////////
+    events[i].id = "input" + i;
   }
 }
 
+// function storeValue() {
+
+//   for (var i = 0; i < businessHours.length; i++) {
+//     localStorage.setItem("input", events)
+//   }
+
+// }
+
+
+function renderLastRegistered() {
+  var textBox = localStorage.getItem("input");
+
+
+  inputBox.textContent = textBox;
+}
+
+saveBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  localStorage.setItem("input", events);
+});
