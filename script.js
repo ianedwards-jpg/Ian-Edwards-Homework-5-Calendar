@@ -2,6 +2,7 @@ var todoInput = document.querySelector("#todo-text");
 var todoForm = document.querySelector("#todo-form");
 var container = document.querySelector("#container");
 var inputBox = document.querySelector("#input");
+var saveBtn = document.querySelector("#saveBtn");
 
 var businessHours = ["9AM:", "10AM:", "11AM:", "12PM:", "1PM:", "2PM:", "3PM:", "4PM:", "5PM:"];
 var saveText = "Save";
@@ -19,6 +20,9 @@ function displayHours() {
 
   // Render a new li for each todo
   for (var i = 0; i < businessHours.length; i++) {
+
+    
+
 
     //new row div
     var row = document.createElement("div")
@@ -60,33 +64,45 @@ function displayHours() {
     /////////////////////////////////////////////////
 
   }
+  var saveBtn = document.querySelector("#saveBtn");
+  saveBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log(event)
+  
+    for (var i = 0; i < businessHours.length; i++) {
+  
+      var textBox = document.querySelector("input" + [i]).value;
+      localStorage.setItem("input" + [i], textBox);
+    }
+  })
 
   renderLastRegistered();
 }
 
 function renderLastRegistered() {
+  var inputBox = document.querySelector("#input");
+
   for (var i = 0; i < businessHours.length; i++) {
 
-    var textBox = localStorage.getItem("input" + [i]);
+    var inputBox = localStorage.getItem("input" + [i]);
     var textNull = "Enter a task and hit Save!"
-    if (textBox === "") {
+    if (inputBox === "") {
       // inputBox.textContent = textnull
-      
-      localStorage.setItem("input" + [i], textBox);
       inputBox.innerHTML = textNull
-    } else {
-      inputBox.innerHTML = textBox;
-    }
+      localStorage.setItem("input" + [i], inputBox);
+    //   } else {
+    //   inputBox.innerHTML = textBox;
+    // }
   }
 }
 
-saveBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  console.log(event)
+// saveBtn.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   console.log(event)
 
-  for (var i = 0; i < businessHours.length; i++) {
+//   for (var i = 0; i < businessHours.length; i++) {
 
-    var textBox = document.querySelector("input" + [i]).value;
-    localStorage.setItem("input" + [i], textBox);
-  }
-});
+//     var textBox = document.querySelector("input" + [i]).value;
+//     localStorage.setItem("input" + [i], textBox);
+//   }
+// })}
