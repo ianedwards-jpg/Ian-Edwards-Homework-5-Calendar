@@ -10,7 +10,7 @@ var events = new Array(); //do i need to reference "i" here?
 
 // Container Document Render 
 displayHours();
-renderLastRegistered();
+// renderLastRegistered();
 
 function displayHours() {
 
@@ -32,7 +32,7 @@ function displayHours() {
     row.appendChild(timeShow);
 
 
-    //Hour Div (10 Columns)
+    //Task Div (10 Columns)
     var inDiv = document.createElement("div");
     inDiv.className += "col-10"
     inDiv.value = inp;
@@ -42,8 +42,9 @@ function displayHours() {
     //Text Input Box Div
     var inp = document.createElement("input")
     inp.setAttribute("type", "text");
+    inp.setAttribute("id", "input" + [i]);
     inp.className += "input"
-    inp.textContent = events[i]
+    // inp.textContent = events[i]
     inDiv.appendChild(inp)
 
     //Hour Div (10 Columns)
@@ -55,33 +56,37 @@ function displayHours() {
     saveBtn.className += "btn saveBtn"
     saveBtn.textContent = saveText;
     btnDiv.appendChild(saveBtn)
+    //ID is setting correctly. 
     /////////////////////////////////////////////////
-    //Create New Array to store values in 
-    all[i] = a;
-    a++;
-    ////////////////////////////////////////////////
-    events[i].id = "input" + i;
+
   }
+
+  renderLastRegistered();
 }
 
-// function storeValue() {
-
-//   for (var i = 0; i < businessHours.length; i++) {
-//     localStorage.setItem("input", events)
-//   }
-
-// }
-
-
 function renderLastRegistered() {
-  var textBox = localStorage.getItem("input");
+  for (var i = 0; i < businessHours.length; i++) {
 
-
-  inputBox.textContent = textBox;
+    var textBox = localStorage.getItem("input" + [i]);
+    var textNull = "Enter a task and hit Save!"
+    if (textBox === "") {
+      // inputBox.textContent = textnull
+      
+      localStorage.setItem("input" + [i], textBox);
+      inputBox.innerHTML = textNull
+    } else {
+      inputBox.innerHTML = textBox;
+    }
+  }
 }
 
 saveBtn.addEventListener("click", function (event) {
   event.preventDefault();
+  console.log(event)
 
-  localStorage.setItem("input", events);
+  for (var i = 0; i < businessHours.length; i++) {
+
+    var textBox = document.querySelector("input" + [i]).value;
+    localStorage.setItem("input" + [i], textBox);
+  }
 });
