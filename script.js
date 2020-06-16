@@ -21,7 +21,7 @@ function displayHours() {
   // Render a new li for each todo
   for (var i = 0; i < businessHours.length; i++) {
 
-    
+
 
 
     //new row div
@@ -46,7 +46,7 @@ function displayHours() {
     //Text Input Box Div
     var inp = document.createElement("input")
     inp.setAttribute("type", "text");
-    inp.setAttribute("id", "input" + [i]);
+    inp.setAttribute("id", "input" + i);
     inp.className += "input"
     // inp.textContent = events[i]
     inDiv.appendChild(inp)
@@ -58,24 +58,24 @@ function displayHours() {
 
     var saveBtn = document.createElement("button")
     saveBtn.className += "btn saveBtn"
+    saveBtn.setAttribute("id", "saveBtn");
     saveBtn.textContent = saveText;
     btnDiv.appendChild(saveBtn)
     //ID is setting correctly. 
     /////////////////////////////////////////////////
+    // var saveBtn = document.querySelector("#saveBtn");
+    saveBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+      console.log(event)
+
+      for (var i = 0; i < businessHours.length; i++) {
+        console.log("#input" + i);
+        var textBox = document.querySelector("#input" + i).value;
+        localStorage.setItem("input" + i, textBox);
+      }
+    });
 
   }
-  var saveBtn = document.querySelector("#saveBtn");
-  saveBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log(event)
-  
-    for (var i = 0; i < businessHours.length; i++) {
-  
-      var textBox = document.querySelector("input" + [i]).value;
-      localStorage.setItem("input" + [i], textBox);
-    }
-  })
-
   renderLastRegistered();
 }
 
@@ -84,15 +84,16 @@ function renderLastRegistered() {
 
   for (var i = 0; i < businessHours.length; i++) {
 
-    var inputBox = localStorage.getItem("input" + [i]);
+    var inputBox = localStorage.getItem("input" + i);
     var textNull = "Enter a task and hit Save!"
     if (inputBox === "") {
       // inputBox.textContent = textnull
       inputBox.innerHTML = textNull
-      localStorage.setItem("input" + [i], inputBox);
-    //   } else {
-    //   inputBox.innerHTML = textBox;
-    // }
+      localStorage.setItem("input" + i, inputBox);
+      //   } else {
+      //   inputBox.innerHTML = textBox;
+      // }
+    }
   }
 }
 
@@ -102,7 +103,7 @@ function renderLastRegistered() {
 
 //   for (var i = 0; i < businessHours.length; i++) {
 
-//     var textBox = document.querySelector("input" + [i]).value;
-//     localStorage.setItem("input" + [i], textBox);
+//     var textBox = document.querySelector("input" + i).value;
+//     localStorage.setItem("input" + i, textBox);
 //   }
-// })}
+// })
